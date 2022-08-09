@@ -1,0 +1,37 @@
+<template>
+
+  <lightning-card>
+  
+    <lightning-record-edit-form
+    class="recordFormCalss"
+     object-api-name="Employee__c"
+     onsuccess={handleSuccess}
+     onsubmit={handleSubmit}
+     onerror={handleError}>
+        <lightning-messages></lightning-messages>
+        <div>
+            <lightning-input-field field-name='Name' label="Name" type="text" required="true"></lightning-input-field>
+            <lightning-input-field field-name="BirthDay__c" label="BirthDay" type="date" required="true"></lightning-input-field>
+            <lightning-input-field field-name="Gender__c" label="Gender" type="Picklist" required="true"></lightning-input-field>
+            <lightning-input-field field-name="Salary__c" label="Salary" type="currency" required="true"></lightning-input-field>
+            <div>
+              
+                <lightning-button variant="brand" type="submit" name="save" label="Save">
+                </lightning-button>
+           </div>
+       </div>
+    </lightning-record-edit-form>
+
+  </lightning-card>
+  <lightning-card>
+    <lightning-datatable
+         key-field="Id"
+         data={list}
+         columns={columns}
+         onrowaction={handleClick}
+         onsave={handleSave}
+         draft-values={draftValues}
+         hide-checkbox-column="true">
+    </lightning-datatable>
+  </lightning-card>
+</template>
